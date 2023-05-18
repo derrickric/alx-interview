@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""UTF-8 validation"""
+"""UTF-8 Validation"""
 
 
 def validUTF8(data):
     """Determines if a given data set
-    represents a valis utf-8 encoding
+    represents a valid utf-8 encoding
     """
     number_bytes = 0
 
@@ -17,23 +17,23 @@ def validUTF8(data):
 
         if number_bytes == 0:
 
-            while mask_bytes & i:
+            while mask_byte & i:
                 number_bytes += 1
                 mask_byte = mask_byte >> 1
 
-                if number_bytes == 0:
-                    continue
+            if number_bytes == 0:
+                continue
 
-                if number_bytes == 1 or number_bytes > 4:
-                    return false
+            if number_bytes == 1 or number_bytes > 4:
+                return False
 
-                    else:
-                        if not (i & mask_1 and not (i & mask_2)):
-                            return false
+        else:
+            if not (i & mask_1 and not (i & mask_2)):
+                return False
 
-                            number_bytes -= 1
+        number_bytes -= 1
 
-                            if number_bytes == 0:
-                                return true
-                                
-                                return false
+    if number_bytes == 0:
+        return True
+
+    return False
